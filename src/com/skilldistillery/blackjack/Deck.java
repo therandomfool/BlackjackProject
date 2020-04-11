@@ -33,4 +33,8 @@ public class Deck {
   public void shuffle() {
 	  Collections.shuffle(cards);
   }
+  
+  public int cardsLeftInDeck() {
+	return  52 - cards.size();
+  }
 }
