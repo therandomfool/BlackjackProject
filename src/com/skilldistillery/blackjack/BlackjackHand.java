@@ -1,19 +1,24 @@
 package com.skilldistillery.blackjack;
 
-
-
 public class BlackjackHand extends Hand {
+	Deck deck = new Deck();
 
-	public void getHandValue() {
+	public BlackjackHand() {
 
 	}
 
-	public void isBlackjack() {
+	public int getHandValue() {
+		return 0;
+		
+	}
 
+	public void isBlackjack() {
+//		return getHandValue() == 21;
 	}
 
 	public boolean isBust() {
 		return false;
+//		 return getHandValue() > 21;
 
 	}
 
@@ -26,5 +31,4 @@ public class BlackjackHand extends Hand {
 		return false;
 	}
 
-	
 }

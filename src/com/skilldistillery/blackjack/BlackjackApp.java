@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class BlackjackApp {
 	private Scanner input = new Scanner(System.in);
-	private Player player = new Player();
+//	private Player player = new Player();
 	private Dealer dealer = new Dealer();
+//	private BlackjackHand bjhand = new BlackjackHand();
 
 	public static void main(String[] args) {
 		BlackjackApp bjApp = new BlackjackApp();
@@ -13,9 +14,11 @@ public class BlackjackApp {
 		bjApp.launch();
 	}
 // welcome to the fools Casino 
+	
 
 	public void launch() {
-
+		
+//		bjhand.getHandValue();
 		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		System.out.println("###########                                                       ###########");
 		System.out.println("###########                                                       ###########");
@@ -48,16 +51,18 @@ public class BlackjackApp {
 			break;
 		}
 		dealer.greetPlayer();
-
-		player.getHand().addCard(dealer.dealCard());
-		dealer.getHand().addCard(dealer.dealCard());
-		player.getHand().addCard(dealer.dealCard());
-		player.getHand().addCard(dealer.dealCard());
-		player.showHand();
-		dealer.showHand();
+		dealer.dealPlayerHand();
+		dealer.dealDealerHand();
 
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	public void bjRules() {
 		System.out.println(
 				"*> If the player is dealt an Ace and a ten-value card (called a \"blackjack\" or \"natural\"), and the dealer does not, the player wins\n"
@@ -89,10 +94,26 @@ public class BlackjackApp {
 		}
 	}
 
-	public void dealCard() {
-		player.addCard(dealer.dealCard());
-		System.out.println(dealer.hand);
 
-	}
+
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

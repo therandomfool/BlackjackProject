@@ -3,26 +3,34 @@ package com.skilldistillery.blackjack;
 import java.util.*;
 
 public abstract class Hand {
-	private List<Card>  cards = new ArrayList<Card>();
-	
-	
+	protected List<Card> cards = new ArrayList<Card>();
+
+	public Hand() {
+
+	}
+
 	public void addCard(Card card) {
 		cards.add(card);
-		
+
 	}
-	
+
 	public void clear() {
-		
+//		cards.removeAll(getHand());
 	}
-	
-	public void getHandValue(int x) {
+
+	public int getHandValue(int x) {
+		return x;
 		
 	}
 
 	public void showHand() {
+		int handTotal=0;
 		for (Card card : cards) {
 			System.out.println(card);
+			System.out.println(card.getValue());
+			handTotal = handTotal + card.getValue();
 		}
 	}
+
 	
 }

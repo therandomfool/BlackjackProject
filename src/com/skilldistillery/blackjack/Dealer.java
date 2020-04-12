@@ -3,7 +3,8 @@ package com.skilldistillery.blackjack;
 import java.util.*;
 
 public class Dealer extends Human {
-//	public String playerHand = null;
+	private Player player = new Player();
+	
 	private Scanner input = new Scanner(System.in);
 	Deck deck = new Deck();
 
@@ -21,13 +22,22 @@ public class Dealer extends Human {
 
 	public Card dealCard() {
 
-	return	deck.dealCard();
+	return deck.dealCard();
 	}
 
 
-	public void dealerStartHand() {
-
-//		System.out.println("Hidden Card " + hand.showHand().get(1));
+	public void dealPlayerHand() {
+		player.getHand().addCard(dealCard());
+		player.getHand().addCard(dealCard());
+		System.out.println("Player Hand****************");
+		player.showHand();
+		
+	}
+	public void dealDealerHand() {
+		getHand().addCard(dealCard());
+		getHand().addCard(dealCard());
+		System.out.println("Dealer Hand----------------");
+		showHand();
 		
 	}
 
