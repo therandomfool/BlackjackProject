@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Deck {
 	private List<Card> cards;
+	int cd=0;
 
 	public Deck() {
 		cards = createDeck();

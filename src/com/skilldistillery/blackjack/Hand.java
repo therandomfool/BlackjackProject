@@ -4,6 +4,7 @@ import java.util.*;
 
 public abstract class Hand {
 	protected List<Card> cards = new ArrayList<Card>();
+	
 
 	public Hand() {
 
@@ -20,17 +21,19 @@ public abstract class Hand {
 
 	public int getHandValue(int x) {
 		return x;
-		
+
 	}
 
 	public void showHand() {
-		int handTotal=0;
+		int handTotal = 0;
+		int cumaTotal = 0;
 		for (Card card : cards) {
 			System.out.println(card);
 			System.out.println(card.getValue());
-			handTotal = handTotal + card.getValue();
+			cumaTotal = cumaTotal + (handTotal + card.getValue());
+			
 		}
+		System.out.println(cumaTotal);
 	}
 
-	
 }

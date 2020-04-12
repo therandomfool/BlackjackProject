@@ -4,9 +4,10 @@ import java.util.*;
 
 public class Dealer extends Human {
 	private Player player = new Player();
-	
+	private BlackjackHand hand = new BlackjackHand();
+	private Deck deck = new Deck();
+
 	private Scanner input = new Scanner(System.in);
-	Deck deck = new Deck();
 
 	public void greetPlayer() {
 
@@ -22,9 +23,8 @@ public class Dealer extends Human {
 
 	public Card dealCard() {
 
-	return deck.dealCard();
+		return deck.dealCard();
 	}
-
 
 	public void dealPlayerHand() {
 		player.getHand().addCard(dealCard());
@@ -32,19 +32,32 @@ public class Dealer extends Human {
 		System.out.println("Player Hand****************");
 		player.showHand();
 		
+
 	}
+
 	public void dealDealerHand() {
 		getHand().addCard(dealCard());
 		getHand().addCard(dealCard());
 		System.out.println("Dealer Hand----------------");
 		showHand();
 		
+
+	}
+
+	public void firstPlayerHand() {
+		if (hand.cumaTotal == 21) {
+			System.out.println("********BLACKJACK*********");
+		}
+	}
+
+	public void firstDealerHand() {
+		if (hand.cumaTotal == 21) {
+			System.out.println("********BLACKJACK*********");
+		}
 	}
 
 	public void moneyHandle() {
 
 	}
-
-
 
 }
