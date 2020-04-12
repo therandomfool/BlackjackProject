@@ -2,7 +2,7 @@ package com.skilldistillery.blackjack;
 
 public abstract class Human {
 
-	protected Hand hand = new BlackjackHand();
+	Hand hand = new BlackjackHand();
 
 	public int bet() {
 		return 0;
@@ -17,10 +17,17 @@ public abstract class Human {
 	}
 	
 	public Hand getHand() {
+		
 		return hand;
 	}
 	
-//	public void getCard() {
-//		
-//	}
+	public void getCard() {
+		
+	}
+	
+	 public void getHandValue() {
+		 
+	 }
 }
+
+

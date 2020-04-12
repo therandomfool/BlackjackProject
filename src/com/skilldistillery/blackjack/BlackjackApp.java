@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class BlackjackApp {
 	private Scanner input = new Scanner(System.in);
-//	private Player player = new Player();
+	private Player player = new Player();
 	private Dealer dealer = new Dealer();
-//	private BlackjackHand bjhand = new BlackjackHand();
+	private BlackjackHand bjhand = new BlackjackHand();
 
 	public static void main(String[] args) {
 		BlackjackApp bjApp = new BlackjackApp();
@@ -14,11 +14,9 @@ public class BlackjackApp {
 		bjApp.launch();
 	}
 // welcome to the fools Casino 
-	
 
 	public void launch() {
-		
-//		bjhand.getHandValue();
+
 		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		System.out.println("###########                                                       ###########");
 		System.out.println("###########                                                       ###########");
@@ -51,18 +49,14 @@ public class BlackjackApp {
 			break;
 		}
 		dealer.greetPlayer();
-		dealer.dealPlayerHand();
-		dealer.dealDealerHand();
+		dealPlayerHand();
+		dealDealerHand();
+		System.out.println(player.getHand().getHandValue());
+		System.out.println(dealer.getHand().getHandValue());
+		bjhand.isBlackjack(); 
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
 	public void bjRules() {
 		System.out.println(
 				"*> If the player is dealt an Ace and a ten-value card (called a \"blackjack\" or \"natural\"), and the dealer does not, the player wins\n"
@@ -94,26 +88,34 @@ public class BlackjackApp {
 		}
 	}
 
+	public void dealPlayerHand() {
+		player.getHand().addCard(dealer.dealCard());
+		player.getHand().addCard(dealer.dealCard());
+		System.out.println("Player Hand****************");
+		player.showHand();
 
+	}
 
+	public void dealDealerHand() {
+		dealer.getHand().addCard(dealer.dealCard());
+		dealer.getHand().addCard(dealer.dealCard());
+		System.out.println("Dealer Hand----------------");
+		dealer.showHand();
 
+	}
 
+//	public void initialBJ() {
+//		if (player.getValue() == 21 && dealer.getValue() == 21) {
+//			System.out.println("********BLACKJACK PUSH*********");
+//		} else if (player.getValue() == 21) {
+//			System.out.println("********PLAYER BLACKJACK*********");
+//		} else if (dealer.getValue() == 21) {
+//			System.out.println("********DEALER BLACKJACK*********");
+//		}
+//		gameLogic();
+//	}
+	
+	public void gameLogic() {
+		
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

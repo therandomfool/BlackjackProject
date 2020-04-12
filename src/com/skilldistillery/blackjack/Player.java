@@ -8,13 +8,14 @@ public class Player extends Human {
 
 	public void addCard(Card card) {
 		hand.addCard(card);
-		System.out.println(hand + "*****************");
-	}
-
-	public void getValue() {
-		// TODO Auto-generated method stub
 		
 	}
+
+	public int getValue() {
+		return hand.getHandValue();
+		
+	}
+	
 
 
 
