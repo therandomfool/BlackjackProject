@@ -1,62 +1,40 @@
 package com.skilldistillery.blackjack;
 
-import java.util.Scanner;
+import java.util.*;
 
-public class Dealer extends Human{
-private Scanner input = new Scanner(System.in);
-	String dName = "";
-	
-	public void greetPlayer(){
+public class Dealer extends Human {
+//	public String playerHand = null;
+	private Scanner input = new Scanner(System.in);
+	Deck deck = new Deck();
+
+	public void greetPlayer() {
+
 		System.out.println("What name should I put on your Players card?");
 		String player = input.nextLine();
-		System.out.println("Greetings " + player + "So glad you decided to join us here at the Fool Casino.  Good Luck");
+		System.out.println("Greetings " + player + "!!");
+
+//		System.out.println(" My name is " + dName + ". So glad you decided to join us here at the Fool Casino.  Good Luck");
+		System.out.println("I will begin by shuffling the cards");
+		deck.shuffle();
+
+	}
+
+	public Card dealCard() {
+
+	return	deck.dealCard();
+	}
+
+
+	public void dealerStartHand() {
+
+//		System.out.println("Hidden Card " + hand.showHand().get(1));
 		
 	}
-	
-	public void dealCard() {
-		
+
+	public void moneyHandle() {
+
 	}
-	
-	public void moneyHandle(){
-		
-	}
-	
-	public void dealerName() {
-		double randName = (Math.round((Math.random() * 10) + 1));
-		int counterName = (int) randName;
-		switch(counterName) {
-		case 1:
-			dName = "Sammy";
-			break;
-		case 2:
-			dName = "Bart";
-			break;
-		case 3:
-			dName = "Zhang Wei";
-			break;
-		case 4:
-			dName = "Devon";
-			break;
-		case 5:
-			dName = "Akemi";
-			break;
-		case 6:
-			dName = "Sammy";
-			break;
-		case 7:
-			dName = "Sammy";
-			break;
-		case 8:
-			dName = "Alvita";
-			break;
-		case 9:
-			dName = "Wang Fang";
-			break;
-		case 10:
-			dName = "Aiko";
-			break;
-			
-		}
-		
-	}
+
+
+
 }

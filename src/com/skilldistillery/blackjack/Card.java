@@ -38,13 +38,18 @@ public class Card {
     return true;
   }
 
-  @Override
-  public String toString() {
-    StringBuilder builder = new StringBuilder();
-    builder.append(rank);
-    builder.append(" of ");
-    builder.append(suit);
-    return builder.toString();
-  }
+@Override
+public String toString() {
+	return "Card [rank=" + rank + ", suit=" + suit + "]";
+}
+
+//  @Override
+//  public String toString() {
+//    StringBuilder builder = new StringBuilder();
+//    builder.append(rank);
+//    builder.append(" of ");
+//    builder.append(suit);
+//    return builder.toString();
+//  }
   
 }

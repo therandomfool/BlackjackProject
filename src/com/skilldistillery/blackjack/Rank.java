@@ -6,7 +6,7 @@ public enum Rank {
 	ACE(11);
 
 	private int value;
-	private String name;
+
 
 	private Rank(int value) {
 		this.value = value;
@@ -16,12 +16,6 @@ public enum Rank {
 		return value;
 	}
 
-	Rank(String name) {
-		this.name = name;
-	}
-
-	public String toString() {
-		return name;
-	}
+	
 
 }
