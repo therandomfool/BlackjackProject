@@ -60,8 +60,6 @@ public class playFlow {
 			dealer.reShuffle();
 		}
 		System.out.println("<-------> READY FOR NEXT HAND ? ? ? <------------->");
-		System.out.println(count--);
-		System.out.println(count);
 		System.out.println("<------------>   <1> YES   <9> NO   <------------->");
 		int kb = input.nextInt();
 		if (kb != 1) {
@@ -177,7 +175,8 @@ public class playFlow {
 	}
 
 	public void dealerHandLogic() {
-		System.out.println(dealer.getHand().getHandValue() + "\n");
+		
+	
 		switch (dealer.getHand().getHandValue()) {
 		case 21:
 		case 20:
@@ -186,6 +185,7 @@ public class playFlow {
 		case 17:
 			System.out.println("DEALER Hand totals: " + dealer.getHand().getHandValue() + "DEALER Stays on: "
 					+ dealer.getHand().getHandValue());
+			dealer.showHand();
 			compareHands();
 		case 16:
 		case 15:
@@ -201,6 +201,7 @@ public class playFlow {
 		case 5:
 		case 4:
 		case 3:
+			dealer.showHand();
 			dealerHitHoldLogic();
 
 		}
