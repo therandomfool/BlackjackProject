@@ -9,8 +9,11 @@ public class playFlow {
 	Deck deck = new Deck();
 	private Scanner input = new Scanner(System.in);
 
+	boolean loop = true;
 	boolean cont = true;
 	int count = 8;
+	double playerMoney;
+	double bet;
 
 	public void launch() {
 
@@ -20,7 +23,7 @@ public class playFlow {
 		System.out.println("&&&&&&&&&&&& * * * *   Welcome to the Fool Casino   * * * * * &&&&&&&&&&&&&&&");
 		System.out.println("###########                                                       ###########");
 		System.out.println("###########                                                       ###########");
-		System.out.println("==========>  where a fool and their money are soon parted  <=================");
+		System.out.println("============>  where a fool and their money are soon parted  <===============");
 		System.out.println("###########                                                       ###########");
 		System.out.println("###########                                                       ###########");
 		System.out.println("* * * + + +      Would you like to play some Blackjack?           + + + * * *");
@@ -52,11 +55,12 @@ public class playFlow {
 	}
 
 	public void firstHand() {
+		bet =0;
 		dealer.getHand().clear();
 		player.getHand().clear();
 
 		if (count <= 1) {
-			count=8;
+			count = 8;
 			dealer.reShuffle();
 		}
 		System.out.println("<-------> READY FOR NEXT HAND ? ? ? <------------->");
@@ -66,8 +70,26 @@ public class playFlow {
 			System.out.println("\n\n\nGoodbye!!");
 			System.exit(0);
 		}
-		System.out.println("\n\n\n\n<---------- NEW HAND <------------->\n\n");
+		while (loop = true) {
+			System.out.println(count);
+			System.out.println("\n\n\n\n<---------->   NEW HAND   <------------->\n");
+			System.out.println("<------------>  You Have $" + playerMoney + "  <------------->");
+			System.out.println("\n\n\n\n<---------- Bet How Much? <------------->\n");
+			bet = input.nextInt();
+			if (bet > playerMoney) {
+				loop = true;
+				break;
+			} else if (bet < playerMoney){
+			System.out.println("<------------>  You Have BET: $" + bet + "  <------------->");
+			
+			loop = false;
+			break;
+			} else {
+				loop = true;
+			}
+		}
 		dealHandPlural();
+		count--;
 		initialBJ();
 		playerHandLogic();
 	}
@@ -86,7 +108,7 @@ public class playFlow {
 
 		System.out.println("The table minimum bet is $1.00");
 		System.out.println("How much money would you like to turn into chips? Whole numbers please");
-		double playerMoney = input.nextDouble();
+		playerMoney = input.nextDouble();
 		if (playerMoney <= 0) {
 			System.out.println(" That is not enough capital to fund your Blackjack fun.  Try again....");
 			bankSetup();
@@ -131,17 +153,22 @@ public class playFlow {
 			System.out.println("\t\t********BLACKJACK PUSH*********\n\n");
 			System.out.println("PLAYER HAND" + player.getHand().getHandValue());
 			System.out.println("DEALER HAND" + dealer.getHand().getHandValue());
+			System.out.println("YOU DIDNT LOSE ANY MONEY");
 			firstHand();
 
 		} else if (player.getValue() == 21) {
-			System.out.println("\t\t********PLAYER BLACKJACK*********\n\n");
+			System.out.println("\t\t********PLAYER BLACKJACK*********\n");
 			System.out.println("PLAYER HAND" + player.getHand().getHandValue());
 			System.out.println("DEALER HAND" + dealer.getHand().getHandValue());
+			System.out.println("PLAYER GETS PAID 1.5x: $" + bet * 1.5);
+			playerMoney += (bet * 1.5);
 			firstHand();
 		} else if (dealer.getValue() == 21) {
 			System.out.println("\t\t********DEALER BLACKJACK*********\n\n");
 			System.out.println("PLAYER HAND" + player.getHand().getHandValue());
 			System.out.println("DEALER HAND" + dealer.getHand().getHandValue());
+			System.out.println("Player Loses: $" + bet);
+			playerMoney -= bet;
 			firstHand();
 		}
 	}
@@ -175,8 +202,7 @@ public class playFlow {
 	}
 
 	public void dealerHandLogic() {
-		
-	
+
 		switch (dealer.getHand().getHandValue()) {
 		case 21:
 		case 20:
@@ -220,6 +246,8 @@ public class playFlow {
 			System.out.println("PLAYER HAND" + player.getHand().getHandValue());
 			System.out.println("DEALER HAND" + dealer.getHand().getHandValue());
 			System.out.println("**********************************");
+			System.out.println("PLAYER LOSES: $" + bet);
+			playerMoney -= bet;
 
 			firstHand();
 		} else if (player.getHand().getHandValue() > dealer.getHand().getHandValue()) {
@@ -227,6 +255,8 @@ public class playFlow {
 			System.out.println("PLAYER HAND" + player.getHand().getHandValue());
 			System.out.println("DEALER HAND" + dealer.getHand().getHandValue());
 			System.out.println("**********************************");
+			System.out.println("PLAYER WINS: $" + bet + " || " + playerMoney);
+			playerMoney += bet;
 
 			firstHand();
 		} else {
@@ -234,6 +264,7 @@ public class playFlow {
 			System.out.println("PLAYER HAND" + player.getHand().getHandValue());
 			System.out.println("DEALER HAND" + dealer.getHand().getHandValue());
 			System.out.println("**********************************");
+			System.out.println("YOU DONT LOSE YOUR BET");
 
 			firstHand();
 		}
@@ -245,6 +276,8 @@ public class playFlow {
 			System.out.println("PLAYER HAND" + player.getHand().getHandValue());
 			System.out.println("DEALER HAND" + dealer.getHand().getHandValue());
 			System.out.println("Dealer Wins");
+			System.out.println("You Lose: $" + bet);
+			playerMoney -= bet;
 
 			firstHand();
 		} else if (dealer.getHand().getHandValue() > 21) {
@@ -252,6 +285,8 @@ public class playFlow {
 			System.out.println("PLAYER HAND" + player.getHand().getHandValue());
 			System.out.println("DEALER HAND" + dealer.getHand().getHandValue());
 			System.out.println("PLAYER Wins");
+			System.out.println("You Win: $" + bet);
+			playerMoney += bet;
 			firstHand();
 		}
 	}

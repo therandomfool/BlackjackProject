@@ -36,6 +36,7 @@ Determine the winner of each round by implementing the remaining rules of Blackj
 
 #### Lessons Learned
 - Keep focused on MVP
+- Stretch goal betting added
 - Wasn't a stated goal or stretch goal, created clear deck/create deck and reshuffle to continue playing.
 - creating an UML is tougher than it looks.  I will have to make many more to get the skill.
 - Getting comfortable building classes in an Object-Oriented manner.
