@@ -1,34 +1,25 @@
 package com.skilldistillery.blackjack;
 
+import java.util.Scanner;
+
 public class BlackjackHand extends Hand {
-	
-	
+	Scanner input = new Scanner(System.in);
 
 	public BlackjackHand() {
 
 	}
 
 	public int getHandValue() {
-		
+
 		int x = 0;
 		for (Card card : cards) {
 			x += card.getValue();
 		}
 		return x;
-		
-		
+
 	}
 
-	public void isBlackjack() {
-		if (player.getValue() == 21 && dealer.getValue() == 21) {
-			System.out.println("********BLACKJACK PUSH*********");
-		} else if (player.getValue() == 21) {
-			System.out.println("********PLAYER BLACKJACK*********");
-		} else if (dealer.getValue() == 21) {
-			System.out.println("********DEALER BLACKJACK*********");
-		}
-		
-	}
+	
 
 	public boolean isBust() {
 		return false;

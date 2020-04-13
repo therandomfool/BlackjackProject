@@ -18,8 +18,10 @@ public abstract class Hand {
 	}
 
 	public void clear() {
-//		cards.removeAll(getHand());
+		cards.clear();
 	}
+	
+	
 
 	public abstract int getHandValue();	
 	
